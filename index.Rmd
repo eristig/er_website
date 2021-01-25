@@ -1,7 +1,7 @@
 ---
-title: "mfeo"
+title: "Erin Ristig's site in progress"
 description: |
-  Welcome to the website. I hope you enjoy it!
+  Happy January!
 site: distill::distill_website
 ---
 
