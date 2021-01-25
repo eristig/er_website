@@ -1,6 +1,6 @@
 ---
 title: "Erin Ristig"
-image: "tobi.jpg"
+image: "rosie.jpg"
 links:
   - label: LinkedIn
     url: "https://www.linkedin.com/in/eristig/"
