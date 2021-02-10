@@ -1,14 +1,14 @@
 name: "."
-title: "mfeo"
+title: "Erin Ristig"
 description: |
-  mfeo
+  Erin Ristig
 output_dir: "docs"
 navbar:
   right:
     - text: "Home"
       href: index.html
-    - text: "About"
-      href: about.html
-    - text: "Erin"
-      href: erin.html
+    - text: "CV"
+      href: CV/CV.pdf
+    - text: "Blog"
+      href: blog.html
 output: distill::distill_article

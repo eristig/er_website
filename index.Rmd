@@ -1,9 +1,20 @@
 ---
-title: "Erin Ristig's site in progress"
-description: |
-  Happy January!
+title: "Erin Ristig"
 site: distill::distill_website
+image: "erin.jpg"
+links:
+  - label: LinkedIn
+    url: "https://www.linkedin.com/in/eristig/"
+  - label: GitHub
+    url: "https://github.com/eristig"
+  - label: Email
+    url: "erin.ristig@gmail.com"
+output:
+  postcards::jolla
 ---
+ 
+I like to eat ice cream. I like to buy $1 scratchcards. I like to play Guess Who. I like to feed my chickens. And other professional things too.
+
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = FALSE)
