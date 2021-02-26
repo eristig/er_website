@@ -1,8 +1,8 @@
 [
   {
     "path": "posts/2021-02-09-welcome/",
-    "title": "welcome",
-    "description": "A short description of the post.",
+    "title": "A Spatial Prioritization Analysis for Shark and Ray Protection in Mozambique",
+    "description": "Master's Thesis Group Project",
     "author": [
       {
         "name": "Erin Ristig",
@@ -11,9 +11,26 @@
     ],
     "date": "2021-02-09",
     "categories": [],
-    "contents": "\nDistill is a publication format for scientific and technical writing, native to the web.\nLearn more about using Distill at https://rstudio.github.io/distill.\n\n\n\n",
+    "contents": "\nLearn more about the group project I have been working on for my Master’s thesis here. https://www.future4fins.com/\nOur project aims to improve shark and conservation policies in Mozambique through science-based recommendations. We will conduct a spatial prioritization analysis that takes into consideration the distribution, conservation status, critical habitat, and fishing pressure of elasmobranchs to provide marine protected area recommendations. In addition, we will consolidate a list of binding requirements and voluntary commitments that are imposed by International Conventions to help evaluate how well these are being met.\nThe results of this project will contribute to the broader marine conservation work being done by WCS and the Mozambique, Madagascar, Kenyan and Tanzanian governments to develop national policy for sharks and rays.\n\n\n\n",
     "preview": {},
-    "last_modified": "2021-02-09T16:40:24-08:00",
+    "last_modified": "2021-02-25T22:24:29-08:00",
+    "input_file": {}
+  },
+  {
+    "path": "posts/2021-02-02-kaupulehu/",
+    "title": "Size limit analysis of reef fishes at Ka‘ūpūlehu Marine Reserve",
+    "description": "Report prepared for the Nature Conservancy and for Ka‘ūpūlehu Marine Life Advisory Committee",
+    "author": [
+      {
+        "name": "Erin Ristig",
+        "url": {}
+      }
+    ],
+    "date": "2021-02-02",
+    "categories": [],
+    "contents": "\nThis report contains an analysis of size limit options for 33 reef-associated fish species that was conducted in support of continued development of management measures at Ka‘ūpūlehu Marine Reserve, Hawaiʻi Island. This work is provided for consideration by Ka‘ūpūlehu Marine Life Advisory Committee (KMLAC) in support of development of a long-term sustainable fishery at Ka‘ūpūlehu and Kūki‘o on Hawaiʻi Island. Through a previous series of workshops coordinated by KMLAC and The Nature Conservancy, size limits were identified as one of several priority management options.\nIn this report, the effects of species-specific size limits are analyzed in terms of optimization of fishing yield and protection of spawning biomass. This analysis is constructed from the perspective that reaching spawning size prior to becoming vulnerable to fishing is a relevant consideration for ensuring long-term sustainability of fish populations. Thus, size limit options are explored relative to size at maturity. Accordingly, the analysis is intended to guide decision-making in relation to yield and spawning biomass objectives, and to support on-going community-led discussions about preference, feasibility, and pragmatism of size limits as management measures within the Kaʻūpūlehu Comprehensive Management Plan.\n\n\n\n",
+    "preview": {},
+    "last_modified": "2021-02-25T22:31:24-08:00",
     "input_file": {}
   }
 ]

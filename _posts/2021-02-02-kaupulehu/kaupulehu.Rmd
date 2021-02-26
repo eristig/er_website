@@ -1,0 +1,20 @@
+---
+title: "Size limit analysis of reef fishes at Ka‘ūpūlehu Marine Reserve"
+description: |
+  Report prepared for the Nature Conservancy and for Ka‘ūpūlehu Marine Life Advisory Committee
+author:
+  - name: Erin Ristig
+date: 02-02-2021
+output:
+  distill::distill_article:
+    self_contained: false
+---
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+This report contains an analysis of size limit options for 33 reef-associated fish species that was conducted in support of continued development of management measures at Ka‘ūpūlehu Marine Reserve, Hawaiʻi Island. This work is provided for consideration by Ka‘ūpūlehu Marine Life Advisory Committee (KMLAC) in support of development of a long-term sustainable fishery at Ka‘ūpūlehu and Kūki‘o on Hawaiʻi Island. Through a previous series of workshops coordinated by KMLAC and The Nature Conservancy, size limits were identified as one of several priority management options.
+
+In this report, the effects of species-specific size limits are analyzed in terms of optimization of fishing yield and protection of spawning biomass. This analysis is constructed from the perspective that reaching spawning size prior to becoming vulnerable to fishing is a relevant consideration for ensuring long-term sustainability of fish populations. Thus, size limit options are explored relative to size at maturity. Accordingly, the analysis is intended to guide decision-making in relation to yield and spawning biomass objectives, and to support on-going community-led discussions about preference, feasibility, and pragmatism of size limits as management measures within the Kaʻūpūlehu Comprehensive Management Plan.
