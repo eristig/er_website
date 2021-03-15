@@ -1,0 +1,252 @@
+---
+title: "Scenario 5 - Inverse Combined Fishing"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+
+library(raster)
+library(tidyverse)
+library(sf)
+library(here)
+library(fasterize)
+library(stringr)
+library(janitor)
+library(prioritizr)
+library(rgdal)
+library(gurobi)
+```
+
+## Scenario 5 - Inverse Combined Fishing Pressure 
+The objective of this scenario was to protect important areas for sharks and rays based on their distribution from IUCN and location of suitable habitats while targeting the areas with high fishing pressure  For this run, we used the inverse of the combined fishing pressure layer as the cost, set targets of 20% for all conservation features, locked in planning units that included existing MPAs, and set a boundary penalty to zero. 
+
+### **STEP 1: Assign planning units, cost layer, and conservation feature**
+
+#### Planning Unit
+```{r}
+# ### reading in the baseline MZ EEZ raster (with cell ids) 
+pu_5 <- raster(here("set_up", "final_rasters", "mz_eez_templates", "mz_rast_id.tif"))
+
+# ### plot to make sure it looks okay
+plot(pu_5)
+```
+
+#### Cost Layer
+```{r}
+### pull in the combined fishing pressure tif file from costs folder in repo
+cost_combined_inverse <- raster(here("set_up", "final_rasters", "costs", "combined_inverse_simple.tif"))
+
+### plot to make sure it looks okay
+plot(cost_combined_inverse)
+```
+
+#### Conservation Features
+This includes all species distributions and habitat rasters
+
+```{r}
+# List of conservation features that will have been loaded into the global environment in other
+### pull in species stack that we created in set-up step 3
+features_stack_5 <- brick(here("set_up", "final_rasters", "conservation_features", "all_features_stack.tif"))
+
+### plot to make sure it looks okay
+plot(features_stack_5)
+```
+
+### Additional Files (Locked-in & Locked-out)
+```{r}
+### read in existing mpas raster
+exist_mpas_5 <- raster(here("set_up", "final_rasters", "planning_unit", "exist_mpa.tif"))
+
+### plot to make sure it looks okay
+plot(exist_mpas_5)
+```
+
+## **STEP 2: Run Some inverse combined Fishing Scenarios!**
+
+**Changing the targets!**
+
+#### RUN 1: combined - 10% target, Boundary Penalty = 0,  
+```{r}
+## Define the problem with the cost, conservation features, targets, locked in and locked out constraints using the minimum set objective
+prob_combined_inverse_10 <- problem(cost_combined_inverse, features = features_stack_5) %>%
+  add_min_set_objective() %>%
+  add_relative_targets(0.1) %>%
+  add_locked_in_constraints(exist_mpas_5) %>%
+  add_gurobi_solver(gap = 0.01, time_limit = 21600)
+
+## Solve problem
+sprob_combined_inverse_10 <- solve(prob_combined_inverse_10)
+## Plot the solution to see what it looks like
+plot(sprob_combined_inverse_10,  main = c("inverse- 10% Targets"))
+
+#Write Raster
+writeRaster(sprob_combined_inverse_10, here("final_results", "scenario_5_inverse",  "sprob_combined_inverse_10_6hr_blm0.tif"), overwrite = TRUE)
+
+```
+
+
+#### RUN 2: combined - 20% target, Boundary Penalty = 0,  
+```{r}
+## Define the problem with the cost, conservation features, targets, locked in and locked out constraints using the minimum set objective
+prob_combined_inverse_10 <- problem(cost_combined_inverse, features = features_stack_5) %>%
+  add_min_set_objective() %>%
+  add_relative_targets(0.2) %>%
+  add_locked_in_constraints(exist_mpas_5) %>%
+  add_gurobi_solver(gap = 0.01, time_limit = 21600) 
+
+## Solve problem
+sprob_combined_inverse_20 <- solve(prob_combined_inverse_20)
+## Plot the solution to see what it looks like
+plot(sprob_combined_inverse_20,  main = c("inverse- 20% Targets"))
+
+#Write Raster
+writeRaster(sprob_combined_inverse_20, here("final_results", "scenario_5_inverse",  "sprob_combined_inverse_20_6hr_blm0.tif"), overwrite = TRUE)
+
+```
+
+#### RUN 3: combined - 30% target, Boundary Penalty = 0,  
+```{r}
+## Define the problem with the cost, conservation features, targets, locked in and locked out constraints using the minimum set objective
+prob_combined_inverse_30 <- problem(cost_combined_inverse, features = features_stack_5) %>%
+  add_min_set_objective() %>%
+  add_relative_targets(0.3) %>%
+  add_locked_in_constraints(exist_mpas_5) %>%
+  add_gurobi_solver(gap = 0.01, time_limit = 21600) 
+
+## Solve problem
+sprob_combined_inverse_30 <- solve(prob_combined_inverse_30)
+## Plot the solution to see what it looks like
+plot(sprob_combined_inverse_30,  main = c("inverse- 30% Targets"))
+
+#Write Raster
+writeRaster(sprob_combined_inverse_30, here("final_results", "scenario_5_inverse",  "sprob_combined_inverse_30_6hr_blm0.tif"), overwrite = TRUE)
+
+```
+
+#### RUN 4: combined - 50% target, Boundary Penalty = 0,  
+```{r}
+## Define the problem with the cost, conservation features, targets, locked in and locked out constraints using the minimum set objective
+prob_combined_inverse_50 <- problem(cost_combined_inverse, features = features_stack_5) %>%
+  add_min_set_objective() %>%
+  add_relative_targets(0.5) %>%
+  add_locked_in_constraints(exist_mpas_5) %>%
+  add_gurobi_solver(gap = 0.01, time_limit = 21600) 
+
+## Solve problem
+sprob_combined_inverse_50 <- solve(prob_combined_inverse_50)
+## Plot the solution to see what it looks like
+plot(sprob_combined_inverse_50,  main = c("inverse- 50% Targets"))
+
+#Write Raster
+writeRaster(sprob_combined_inverse_50, here("final_results", "scenario_5_inverse",  "sprob_combined_inverse_50_6hr_blm0.tif"), overwrite = TRUE)
+
+```
+
+
+### **STEP 2: Run Models and Sensitivity Analysis
+
+Boundary Penalty Sensitivty Analysis:
+
+#### RUN 5: combined - 10% target, Boundary Penalty = 0.000001,  
+```{r}
+## Define the problem with the cost, conservation features, targets, locked in and locked out constraints using the minimum set objective
+prob_combined_inverse_10_blm <- problem(cost_combined_inverse, features = features_stack_5) %>%
+  add_min_set_objective() %>%
+  add_relative_targets(0.1) %>%
+  add_locked_in_constraints(exist_mpas_5) %>%
+  add_gurobi_solver(gap = 0.01, time_limit = 21600) %>% 
+  add_boundary_penalties(0.000001)
+
+## Solve problem
+sprob_combined_inverse_10_blm <- solve(prob_combined_inverse_10_blm)
+
+## Plot the solution to see what it looks like
+plot(sprob_combined_inverse_10_blm,  main = c("inverse- 10% Targets with boundary penalty"))
+
+#Write Raster
+writeRaster(sprob_combined_inverse_10_blm, here("final_results", "scenario_5_inverse",  "sprob_combined_inverse_10_6hr_blm0.000001.tif"), overwrite = TRUE)
+
+```
+
+
+#### RUN 6: combined - 20% target, Boundary Penalty = 0.000001,  
+```{r}
+## Define the problem with the cost, conservation features, targets, locked in and locked out constraints using the minimum set objective
+prob_combined_inverse_20__blm <- problem(cost_combined_inverse, features = features_stack_5) %>%
+  add_min_set_objective() %>%
+  add_relative_targets(0.2) %>%
+  add_locked_in_constraints(exist_mpas_5) %>%
+  add_gurobi_solver(gap = 0.01, time_limit = 21600) %>% 
+  add_boundary_penalties(0.000001)
+
+## Solve problem
+sprob_combined_inverse_20__blm <- solve(prob_combined_inverse_20__blm)
+
+## Plot the solution to see what it looks like
+plot(sprob_combined_inverse_20__blm,  main = c("inverse- 20% Targets with boundary penalty"))
+
+## Write Raster
+writeRaster(sprob_combined_inverse_20__blm, here("final_results", "scenario_5_inverse",  "sprob_combined_inverse_20_6hr_blm0.000001.tif"), overwrite = TRUE)
+
+```
+
+#### RUN 7: combined - 30% target, Boundary Penalty = 0.000001,  
+```{r}
+## Define the problem with the cost, conservation features, targets, locked in and locked out constraints using the minimum set objective
+prob_combined_inverse_30_blm <- problem(cost_combined_inverse, features = features_stack_5) %>%
+  add_min_set_objective() %>%
+  add_relative_targets(0.3) %>%
+  add_locked_in_constraints(exist_mpas_5) %>%
+  add_gurobi_solver(gap = 0.01, time_limit = 21600) %>% 
+  add_boundary_penalties(0.000001)
+
+## Solve problem
+sprob_combined_inverse_30_blm <- solve(prob_combined_inverse_30_blm)
+
+## Plot the solution to see what it looks like
+plot(sprob_combined_inverse_30_blm,  main = c("inverse- 30% Targets with boundary penalty"))
+
+#Write Raster
+writeRaster(sprob_combined_inverse_30_blm, here("final_results", "scenario_5_inverse",  "sprob_combined_inverse_30_6hr_blm0.000001.tif"), overwrite = TRUE)
+
+```
+
+#### RUN 8: combined - 50% target, Boundary Penalty = 0,  
+```{r}
+## Define the problem with the cost, conservation features, targets, locked in and locked out constraints using the minimum set objective
+prob_combined_inverse_50_blm <- problem(cost_combined_inverse, features = features_stack_5) %>%
+  add_min_set_objective() %>%
+  add_relative_targets(0.5) %>%
+  add_locked_in_constraints(exist_mpas_5) %>%
+  add_gurobi_solver(gap = 0.01, time_limit = 21600) %>% 
+  add_boundary_penalties(0.000001)
+
+## Solve problem
+sprob_combined_inverse_50_blm <- solve(prob_combined_inverse_50_blm)
+
+## Plot the solution to see what it looks like
+plot(sprob_combined_inverse_50_blm,  main = c("inverse- 50% Targets with boundary penalty"))
+
+#Write Raster
+writeRaster(sprob_combined_inverse_50_blm, here("final_results", "scenario_5_inverse",  "sprob_combined_inverse_50_6hr_blm0.000001.tif"), overwrite = TRUE)
+
+```
+
+MPA Sensitivity Analysis (locked in vs locked out)
+```{r}
+## Define the problem with the cost, conservation features, targets, locked in and locked out constraints using the minimum set objective
+prob_combined_inverse_20_nompa <- problem(cost_combined_inverse, features = features_stack_5) %>%
+  add_min_set_objective() %>%
+  add_relative_targets(0.2) %>%
+  add_gurobi_solver(gap = 0.01, time_limit = 21600) 
+
+## Solve problem
+sprob_combined_inverse_20_nompa <- solve(prob_combined_inverse_20_nompa)
+## Plot the solution to see what it looks like
+plot(sprob_combined_inverse_20_nompa,  main = c("inverse- 20% Targets no MPAs"))
+
+#Write Raster
+writeRaster(sprob_combined_inverse_20_nompa, here("final_results", "sensitivity", "mpas",  "sprob_combined_inverse_20_6hr_blm0_nompa.tif"), overwrite = TRUE)
+```
+

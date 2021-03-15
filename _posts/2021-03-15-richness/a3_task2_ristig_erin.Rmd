@@ -1,0 +1,83 @@
+---
+title: "Species Richness"
+author: "Erin Ristig"
+date: "2/21/2021"
+output: 
+  html_document:
+    code_folding: hide
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE)
+```
+
+```{r}
+# Read in libraries
+library(raster)
+library(tidyverse)
+library(here)
+library(sf)
+library(fasterize)
+library(rnaturalearth)
+library(rnaturalearthdata)
+library(ggsn)
+library(ggplot2)
+library(ggspatial)
+
+```
+
+**Data source:** Kaschner, K., Rius-Barile, J., Kesner-Reyes, K., Garilao, C., Kullander, S., Rees, T., & Froese, R. (2016). AquaMaps: Predicted range maps for aquatic species. www.aquamaps.org
+
+***
+### Species Richness Raster Map
+
+```{r, include = FALSE}
+# Read in the world basemap
+world <- ne_countries(scale = "medium", returnclass = "sf")
+
+# Check the CRS
+st_crs(world)
+
+# Identify the tif files 
+am_files <- list.files(path = "ca_cetaceans", full.names = TRUE)
+
+# Create a raster stack from all of the tifs
+am_rast <- raster::stack(am_files)
+
+# Create a function to mark values of 0.6 or greater as present (1)
+is_present <- function(x, thresh = .6) {
+  y <- ifelse(x >= thresh, 1, 0)
+  return(y)
+}
+
+# Using the above function, calculate species richness
+species <- calc(am_rast, fun = is_present)
+
+# Create a dataframe from the raster, count presence of species
+species_df <- raster::rasterToPoints(species) %>%
+  as.data.frame() %>% 
+  pivot_longer(cols = (3:37) , names_to = "species", values_to = "presence") %>% 
+  filter(presence == 1) %>% 
+  group_by(x, y) %>% 
+  count(presence)
+
+```
+
+```{r, fig.cap = "Presence raster of 35 cetacean species in the California Bight. Species richness determined using AquaMaps occurrence data. Threshold value to classify a species as 'present' set at 0.6."}
+
+# Create raster map
+ggplot() +
+  geom_raster(data = species_df, aes(x = x, y = y, fill = n)) +
+  geom_sf(data = world) +
+  coord_sf(expand = 0, xlim = c(-125, -115), ylim = c(32, 38)) +
+  scale_fill_gradient(low = 'white', high = 'slateblue4') +
+  theme_void() +
+  theme(panel.background = element_rect(fill = 'slateblue4')) +
+  labs(title = "Species Presence in the California Bight",
+       subtitle = "35 Cetacean Species",
+       fill = "Number of Species") +
+  annotation_north_arrow(aes(location = "br")) +
+  annotation_scale(aes(location = "tr"))
+
+```
+

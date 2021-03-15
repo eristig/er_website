@@ -1,0 +1,322 @@
+---
+title: "scenario_0_boundary_penalty"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+
+library(raster)
+library(tidyverse)
+library(sf)
+library(here)
+library(fasterize)
+library(stringr)
+library(janitor)
+library(prioritizr)
+library(rgdal)
+library(gurobi)
+library(patchwork)
+```
+
+
+## Boundary Penalty Sensitivity Analysis using Combined Fishing Pressure 
+To find an efficient boundary penalty (also called a boundary length modifier in Marxan) to use in the model, we used the combined fishing pressure cost layer and ran the model a number of times. We started with a boundary penalty of 0 and exponentially increased the penalty up to 1 and then plotted the trade-off between total reserve system boundary length and average area of the reserve system for each of these runs to find the most efficient bounadary value. For our model it was 0.000001. 
+
+### **STEP 1: Assign planning units, cost layer, and conservation feature to use in the model runs**
+
+#### Planning Unit
+```{r}
+# ### reading in the baseline MZ EEZ raster (with cell ids) 
+pu_0 <- raster(here("set_up", "final_rasters", "mz_eez_templates", "mz_rast_id.tif"))
+
+# ### plot to make sure it looks okay
+plot(pu_0)
+```
+
+
+#### Cost Layer
+```{r}
+### pull in the combined fishing pressure tif file from costs folder in repo
+cost_combined_0 <- raster(here("set_up", "final_rasters", "costs", "combined_stack_sum.tif"))
+
+### plot to make sure it looks okay
+plot(cost_combined_0)
+```
+
+#### Conservation Features
+This includes all species distributions and habitat rasters
+
+```{r}
+# List of conservation features that will have been loaded into the global environment in other
+### pull in species stack that we created in set-up step 3
+features_stack_) <- brick(here("set_up", "final_rasters", "conservation_features", "all_features_stack.tif"))
+
+### plot to make sure it looks okay
+plot(features_stack_)
+```
+
+### Additional Files (Locked-in & Locked-out)
+```{r}
+# MPAs
+### read in existing mpas raster
+exist_mpas_0 <- raster(here("set_up", "final_rasters", "planning_unit", "exist_mpa.tif"))
+
+### plot to make sure it looks okay
+plot(exist_mpas_0)
+```
+
+#### **Step 2: Time to start doing model runs with different boundary penalty values**
+
+The following runs were using combined fishing pressure as a cost with 20% targets and MPA's locked-in.
+
+#### Boundary Penalty: 0
+```{r}
+
+## Define the problem with the cost, conservation features, targets, locked in and locked out constraints using the minimum set objective
+prob_combined_20_0 <- problem(cost_combined_0, features = features_stack_0) %>%
+  add_min_set_objective() %>%
+  add_relative_targets(0.2) %>%
+  add_locked_in_constraints(exist_mpas_4) %>%
+  add_gurobi_solver(gap = 0.01, time_limit = 21600)
+
+## Solve problem
+sprob_combined_20_0 <- solve(prob_combined_20_0)
+## Plot the solution to see what it looks like
+plot(sprob_combined_20_0,  main = c("combined- 0 boundary"))
+
+#Save plot
+writeRaster(sprob_combined_20_0, here("final_results", "boundary_penalty", "sprob_combined_20_6hr_blm0.tif"), overwrite = TRUE)
+```
+
+
+#### Boundary Penalty: 0.000003
+```{r}
+
+## Define the problem with the cost, conservation features, targets, locked in and locked out constraints using the minimum set objective
+prob_combined_20_000003 <- problem(cost_combined_0, features = features_stack_0) %>%
+  add_min_set_objective() %>%
+  add_relative_targets(0.2) %>%
+  add_locked_in_constraints(exist_mpas_4) %>%
+  add_gurobi_solver(gap = 0.01, time_limit = 21600) %>% 
+  add_boundary_penalties(0.000003)
+
+## Solve problem
+sprob_combined_20_000003 <- solve(prob_combined_20_000003)
+## Plot the solution to see what it looks like
+plot(sprob_combined_20_000003,  main = c("combined - 0.000003 boundary"))
+
+#Save plot
+writeRaster(sprob_combined_20_01, here("final_results", "boundary_penalty", "sprob_combined_20_6hr_blm0.000003.tif"), overwrite = TRUE)
+
+```
+
+
+#### Boundary Penalty: 0.000002
+```{r}
+## Define the problem with the cost, conservation features, targets, locked in and locked out constraints using the minimum set objective
+prob_combined_20_000002 <- problem(cost_combined_0, features = features_stack_4) %>%
+  add_min_set_objective() %>%
+  add_relative_targets(0.2) %>%
+  add_locked_in_constraints(exist_mpas_4) %>%
+  add_gurobi_solver(gap = 0.01, time_limit = 21600) %>% 
+  add_boundary_penalties(0.000002)
+
+## Solve problem
+sprob_combined_20_000002 <- solve(prob_combined_20_000002)
+## Plot the solution to see what it looks like
+plot(sprob_combined_20_000002,  main = c("combined- 0.000002 Boundary"))
+
+#Save plot
+writeRaster(sprob_combined_20_000002, here("final_results", "boundary_penalty", "sprob_combined_20_6hr_blm0.000002.tif"), overwrite = TRUE)
+
+```
+
+
+#### Boundary Penalty: 0.0000007
+```{r}
+## Define the problem with the cost, conservation features, targets, locked in and locked out constraints using the minimum set objective
+prob_combined_20_000007 <- problem(cost_combined_0, features = features_stack_4) %>%
+  add_min_set_objective() %>%
+  add_relative_targets(0.2) %>%
+  add_locked_in_constraints(exist_mpas_4) %>%
+  add_gurobi_solver(gap = 0.01, time_limit = 21600) %>% 
+  add_boundary_penalties(0.000007)
+
+## Solve problem
+sprob_combined_20_000007 <- solve(prob_combined_20_000007)
+## Plot the solution to see what it looks like
+plot(sprob_combined_20_000007,  main = c("combined- 0.000007 boundary"))
+
+#Save plot
+writeRaster(sprob_combined_20_000007, here("final_results", "boundary_penalty", "sprob_combined_20_6hr_blm0.000007.tif"), overwrite = TRUE)
+
+```
+
+
+#### Boundary Penalty: 0.0001
+```{r}
+## Define the problem with the cost, conservation features, targets, locked in and locked out constraints using the minimum set objective
+prob_combined_20_0001 <- problem(cost_combined_0, features = features_stack_4) %>%
+  add_min_set_objective() %>%
+  add_relative_targets(0.2) %>%
+  #add_locked_in_constraints(exist_mpas_4) %>%
+  add_gurobi_solver(gap = 0.01, time_limit = 21600) %>% 
+  add_boundary_penalties(0.0001)
+
+## Solve problem
+sprob_combined_20_0001 <- solve(prob_combined_20_0001)
+## Plot the solution to see what it looks like
+plot(sprob_combined_20,  main = c("combined- 20% Targets"))
+
+#Save plot
+writeRaster(sprob_combined_20_0001, (here("final_results", "boundary_penalty", "sprob_combined_20_6hr_blm0.0001tif")), overwrite = TRUE)
+
+```
+
+## Convert tifs to shapefiles to extract BLM data
+```{r}
+#BLM 0
+blm0 <- raster(here("final_results", "sprob_combined_20_6hr_blm0.tif"))
+blm0_sf <- rasterToPolygons(blm0, fun = function(sprob_combined_20_6hr_blm0){sprob_combined_20_6hr_blm0==1})
+plot(blm0_sf)
+shapefile(blm0_sf, here("set_up", "blm_sensitivity", "blm0"))
+
+#BLM 0.000000001
+blm0.000000001 <- raster(here("final_results", "sprob_combined_20_6hr_blm0.000000001.tif"))
+blm0.000000001_sf <- rasterToPolygons(blm0.000000001, fun = function(sprob_combined_20_6hr_blm0.000000001){sprob_combined_20_6hr_blm0.000000001==1})
+plot(blm0.000000001_sf)
+shapefile(blm0.000000001_sf, here("set_up", "blm_sensitivity", "blm81"))
+
+#BLM 0.00000001
+blm0.00000001 <- raster(here("final_results", "sprob_combined_20_6hr_blm0.00000001.tif"))
+blm0.00000001_sf <- rasterToPolygons(blm0.00000001, fun = function(sprob_combined_20_6hr_blm0.00000001){sprob_combined_20_6hr_blm0.00000001==1})
+plot(blm0.00000001_sf)
+shapefile(blm0.00000001_sf, here("set_up", "blm_sensitivity", "blm71"))
+
+#BLM 0.0000001
+blm0.0000001 <- raster(here("final_results", "sprob_combined_20_6hr_blm0.0000001.tif"))
+blm0.0000001_sf <- rasterToPolygons(blm0.0000001, fun = function(sprob_combined_20_6hr_blm0.0000001){sprob_combined_20_6hr_blm0.0000001==1})
+plot(blm0.0000001_sf)
+shapefile(blm0.0000001_sf, here("set_up", "blm_sensitivity", "blm61"))
+
+#BLM 0.000001
+blm0.000001 <- raster(here("final_results", "sprob_combined_20_6hr_blm0.000001.tif"))
+blm0.000001_sf <- rasterToPolygons(blm0.000001, fun = function(sprob_combined_20_6hr_blm0.000001){sprob_combined_20_6hr_blm0.000001==1})
+plot(blm0.000001_sf)
+shapefile(blm0.000001_sf, here("set_up", "blm_sensitivity", "blm51"))
+
+#BLM 0.00001
+blm0.00001 <- raster(here("final_results", "sprob_combined_20_6hr_blm0.00001.tif"))
+blm0.00001_sf <- rasterToPolygons(blm0.00001, fun = function(sprob_combined_20_6hr_blm0.00001){sprob_combined_20_6hr_blm0.00001==1})
+plot(blm0.00001_sf)
+shapefile(blm0.00001_sf, here("set_up", "blm_sensitivity", "blm41"))
+
+#BLM 0.0001
+blm0.0001 <- raster(here("final_results", "sprob_combined_20_6hr_blm0.0001.tif"))
+blm0.0001_sf <- rasterToPolygons(blm0.0001, fun = function(sprob_combined_20_6hr_blm0.0001){sprob_combined_20_6hr_blm0.0001==1})
+plot(blm0.0001_sf)
+shapefile(blm0.0001_sf, here("set_up", "blm_sensitivity", "blm31"))
+
+#BLM 0.001
+blm0.001 <- raster(here("final_results", "sprob_combined_20_6hr_blm0.001.tif"))
+blm0.001_sf <- rasterToPolygons(blm0.001, fun = function(sprob_combined_20_6hr_blm0.001){sprob_combined_20_6hr_blm0.001==1})
+plot(blm0.001_sf)
+shapefile(blm0.001_sf, here("set_up", "blm_sensitivity", "blm21"))
+
+#BLM 0.01
+blm0.01 <- raster(here("final_results", "sprob_combined_20_6hr_blm0.01.tif"))
+blm0.01_sf <- rasterToPolygons(blm0.01, fun = function(sprob_combined_20_6hr_blm0.01){sprob_combined_20_6hr_blm0.01==1})
+plot(blm0.01_sf)
+shapefile(blm0.01_sf, here("set_up", "blm_sensitivity", "blm11"))
+
+#BLM 0.1
+blm0.1 <- raster(here("final_results", "sprob_combined_20_6hr_blm0.1.tif"))
+blm0.1_sf <- rasterToPolygons(blm0.1, fun = function(sprob_combined_20_6hr_blm0.1){sprob_combined_20_6hr_blm0.1==1})
+plot(blm0.1_sf)
+shapefile(blm0.1_sf, here("set_up", "blm_sensitivity", "blm01"))
+
+#BLM 1
+blm1 <- raster(here("final_results", "sprob_combined_20_6hr_blm1.tif"))
+blm1_sf <- rasterToPolygons(blm1, fun = function(sprob_combined_20_6hr_blm1){sprob_combined_20_6hr_blm1==1})
+plot(blm1_sf)
+shapefile(blm1_sf, here("set_up", "blm_sensitivity", "blm1"))
+
+#BLM 0.000003
+blm0.000003 <- raster(here("final_results", "sprob_combined_20_6hr_blm0.000003.tif"))
+blm0.000003_sf <- rasterToPolygons(blm0.000003, fun = function(sprob_combined_20_6hr_blm0.000003){sprob_combined_20_6hr_blm0.000003==1})
+plot(blm0.000003_sf)
+shapefile(blm0.000003_sf, here("set_up", "blm_sensitivity", "blm53"))
+
+#BLM 0.000005
+blm0.000005 <- raster(here("final_results", "sprob_combined_20_6hr_blm0.000005.tif"))
+blm0.000005_sf <- rasterToPolygons(blm0.000005, fun = function(sprob_combined_20_6hr_blm0.000005){sprob_combined_20_6hr_blm0.000005==1})
+plot(blm0.000005_sf)
+shapefile(blm0.000005_sf, here("set_up", "blm_sensitivity", "blm55"))
+
+#BLM 0.000007
+blm0.000007 <- raster(here("final_results", "sprob_combined_20_6hr_blm0.000007.tif"))
+blm0.000007_sf <- rasterToPolygons(blm0.000007, fun = function(sprob_combined_20_6hr_blm0.000007){sprob_combined_20_6hr_blm0.000007==1})
+plot(blm0.000007_sf)
+shapefile(blm0.000007_sf, here("set_up", "blm_sensitivity", "blm57"))
+
+#BLM 0.000002
+blm0.000002 <- raster(here("final_results", "sprob_combined_20_6hr_blm0.000002.tif"))
+blm0.000002_sf <- rasterToPolygons(blm0.000002, fun = function(sprob_combined_20_6hr_blm0.000002){sprob_combined_20_6hr_blm0.000002==1})
+plot(blm0.000002_sf)
+shapefile(blm0.000002_sf, here("set_up", "blm_sensitivity", "blm52"))
+
+```
+
+## BLM optimization curve plot
+```{r}
+#read in csv
+blm_sensitivity_all <- read_csv(here("set_up", "blm_sensitivity", "blm_sensitivity_values.csv"))
+
+blm_sensitivity_1 <- blm_sensitivity_all %>% 
+  filter(round == "1")
+
+# plot it - average area - first round
+ggplot(data = blm_sensitivity_1, aes(x = area_avg_km2, y = perimeter_sum_km)) +
+  geom_point() +
+  geom_text(aes(label = BLM), hjust = 1, vjust = 1) +
+  geom_line() +
+  labs(x = "Average Area (km2)",
+       y = "Boundary Length Sum (km)",
+       title = "Boundary Penalty Sensitivity Analysis")
+
+# plot it - average area - with honed in values
+ggplot(data = blm_sensitivity_all, aes(x = area_avg_km2, y = perimeter_sum_km)) +
+  geom_point() +
+  geom_text(aes(label = BLM), hjust = 1, vjust = 1) +
+  geom_line() +
+  labs(x = "Average Area (km2)",
+       y = "Boundary Length Sum (km)",
+       title = "Boundary Penalty Sensitivity Analysis")
+
+
+# plot it - total area
+# ggplot(data = blm_sensitivity, aes(x = total_area_km2, y = perimeter_sum_km)) +
+#   geom_point() +
+#   geom_text(aes(label = BLM), hjust = 1, vjust = 1) +
+#   geom_line() +
+#   labs(x = "Total Area (km2)",
+#        y = "Boundary Length Sum (km)",
+#        title = "BLM Sensitivity Analysis - Total Area")
+# 
+# # plot it - perimeter to area
+# ggplot(data = blm_sensitivity, aes(x = perimeter_sum_km, y = total_area_km2)) +
+# #ggplot(data = blm_sensitivity, aes(x = total_area_km2 , y = perimeter_sum_km)) +
+#   geom_point() +
+#   geom_text(aes(label = BLM), hjust = 1, vjust = 1) +
+#   geom_line() +
+#   labs(x = "Total Area (km2)",
+#        y = "Boundary Length Sum (km)",
+#        title = "BLM Sensitivity Analysis - Total Area")
+
+```
+
+
+
+
+

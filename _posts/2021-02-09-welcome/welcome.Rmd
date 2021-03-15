@@ -15,9 +15,12 @@ output:
 knitr::opts_chunk$set(echo = FALSE)
 ```
 
-Learn more about the group project I have been working on for my Master's thesis here.
-https://www.future4fins.com/
+### Learn more about the group project I have been working on for my Master's thesis here: https://www.future4fins.com/
 
 Our project aims to improve shark and conservation policies in Mozambique through science-based recommendations. We will conduct a spatial prioritization analysis that takes into consideration the distribution, conservation status, critical habitat, and fishing pressure of elasmobranchs to provide marine protected area recommendations. In addition, we will consolidate a list of binding requirements and voluntary commitments that are imposed by International Conventions to help evaluate how well these are being met.
 
 The results of this project will contribute to the broader marine conservation work being done by WCS and the Mozambique, Madagascar, Kenyan and Tanzanian governments to develop national policy for sharks and rays.
+
+Here are two example maps showing some of the conservation features used in the prioritization analysis:
+
+![**Figure 1.** Conservation features: (a) species distribution for four of the focal species including Pristis pristis, Mobula kuhlii, Sypherma lewini, and Carcharhinus longimanus, and (b) five critical habitats including coral, seagrass, mangroves, seamounts, and knolls.](figures/maps.png)
