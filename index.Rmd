@@ -4,7 +4,7 @@ site: distill::distill_website
 image: "fish3.jpg"
 links:
   - label: Email
-    url: "mailto:erin.ristig@gmail.com"
+    url: "mailto:ermarineconsulting@gmail.com"
   - label: LinkedIn
     url: "https://www.linkedin.com/in/eristig/"
   - label: GitHub
