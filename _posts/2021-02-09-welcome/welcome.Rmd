@@ -1,10 +1,10 @@
 ---
 title: "A Spatial Prioritization Analysis for Shark and Ray Protection in Mozambique"
 description: |
-  Master's Thesis Group Project
+   **Client:** Wildlife Conservation Society
 author:
   - name: Erin Ristig
-date: 02-09-2021
+date: 06-01-2021
 output:
   distill::distill_article:
     self_contained: false
@@ -15,12 +15,14 @@ output:
 knitr::opts_chunk$set(echo = FALSE)
 ```
 
-### Learn more about the group project I have been working on for my Master's thesis here: https://www.future4fins.com/
+### Master's Thesis Group Project, Bren School of Environmental Science & Management, University of California, Santa Barbara
 
-Our project aims to improve shark and conservation policies in Mozambique through science-based recommendations. We will conduct a spatial prioritization analysis that takes into consideration the distribution, conservation status, critical habitat, and fishing pressure of elasmobranchs to provide marine protected area recommendations. In addition, we will consolidate a list of binding requirements and voluntary commitments that are imposed by International Conventions to help evaluate how well these are being met.
+#### Abstract
+Chondrichthyes, a class of marine cartilaginous fish (sharks, rays, skates, and chimaeras), are important predators in pelagic, coastal, and estuarine food webs. Many of these species are at high risk of extinction with approximately one-quarter of sharks and rays categorized as threatened according to the IUCN Red List. Mozambique is a global hotspot for shark and ray species richness, endemism, and evolutionary distinctiveness. Chondrichthyes face many threats in Mozambique, especially from fishers, as up to 60% of the population is in some way dependent on marine resources for either sustenance or employment. Marine protected areas (MPAs) may be an effective conservation strategy for sharks and rays if carefully planned. Here, we develop a spatial prioritization model that identifies key areas for shark and ray conservation within the Mozambique economic exclusive zone (EEZ). This is an intermediate step in an ongoing MPA planning process currently underway in Mozambique. Our model will be used by Wildlife Conservation Society (WCS) and the Mozambique government to ensure shark and ray protection is considered in the overall MPA network design.
 
-The results of this project will contribute to the broader marine conservation work being done by WCS and the Mozambique, Madagascar, Kenyan and Tanzanian governments to develop national policy for sharks and rays.
+[**Full Thesis**](Masters_Group_Project_Thesis.pdf)
 
-Here are two example maps showing some of the conservation features used in the prioritization analysis:
 
-![**Figure 1.** Conservation features: (a) species distribution for four of the focal species including Pristis pristis, Mobula kuhlii, Sypherma lewini, and Carcharhinus longimanus, and (b) five critical habitats including coral, seagrass, mangroves, seamounts, and knolls.](figures/maps.png)
+<!-- Here are two example maps showing some of the conservation features used in the prioritization analysis: -->
+
+<!-- ![**Figure 1.** Conservation features: (a) species distribution for four of the focal species including Pristis pristis, Mobula kuhlii, Sypherma lewini, and Carcharhinus longimanus, and (b) five critical habitats including coral, seagrass, mangroves, seamounts, and knolls.](figures/maps.png) -->
