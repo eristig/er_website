@@ -1,5 +1,4 @@
 ---
-title: "ER Marine Consulting"
 site: distill::distill_website
 image: "fish3.jpg"
 links:
@@ -13,7 +12,7 @@ output:
   postcards::jolla
 ---
  
-Erin Ristig is an independent consultant working with NGOs and academics on a variety of projects. Most often in the context of marine conservation and fisheries management, her experience includes data collection program design, capacity-building and facilitation, project and data management, science communication, and community-driven conservation in international settings. 
+Erin Ristig is an independent consultant working with NGOs and academics, most often in the context of marine conservation and fisheries management. Her experience includes data collection program design, capacity-building and facilitation, project and data management, science communication, and community-driven conservation in international settings. 
 
 She is passionate about design and adoption of technology that can help enhance marine conservation, implementation of fisheries data collection programs, and stakeholder facilitation and training.
 Erin has experience working in French Polynesia, Mexico, Ecuador, Argentina, Mozambique, Brazil, and Portugal. She holds a Master of Environmental Science and Management degree in Coastal Marine Resources Management from the Bren School of Environmental Science & Management at UC Santa Barbara and a Bachelor of Arts degree in Environmental Analysis and Spanish from Claremont McKenna College.
@@ -25,7 +24,9 @@ The Rahui Center --
 The Nature Conservancy --
 University of California, Santa Barbara --
 Environmental Defense Fund --
-California Marine Sanctuary Foundation
+California Marine Sanctuary Foundation --
+Barefoot Ocean --
+NOAA
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = FALSE)

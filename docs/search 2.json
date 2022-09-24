@@ -1,0 +1,34 @@
+{
+  "articles": [
+    {
+      "path": "about.html",
+      "title": "In Progress",
+      "description": "Descriptions TBD",
+      "author": [],
+      "contents": "\n\n\n\n",
+      "last_modified": "2022-08-15T16:42:01-07:00"
+    },
+    {
+      "path": "blog.html",
+      "title": "Portfolio (in progress)",
+      "author": [],
+      "contents": "\n\n\n\n",
+      "last_modified": "2022-08-15T16:42:04-07:00"
+    },
+    {
+      "path": "erin.html",
+      "title": "Blog",
+      "author": [],
+      "contents": "\n\n          \n          \n          ER Marine Consulting\n          \n          \n          Home\n          CV\n          Portfolio\n          ☰\n          \n          \n      \n        \n          \n            Blog\n          \n          \n            \n              I like to eat ice cream.\n            \n            \n              I like to eat ice cream.\n            \n          \n\n          \n            \n              \n                  \n                    \n                      LinkedIn\n                    \n                  \n                \n                                \n                  \n                    \n                      GitHub\n                    \n                  \n                \n                              \n          \n\n          \n            \n              \n                                \n                  \n                    LinkedIn\n                  \n                \n                                \n                  \n                    GitHub\n                  \n                \n                              \n            \n          \n        \n      \n    \n\n    \n    \n    ",
+      "last_modified": "2022-08-15T16:42:05-07:00"
+    },
+    {
+      "path": "index.html",
+      "title": "ER Marine Consulting",
+      "author": [],
+      "contents": "\n\n          \n          \n          ER Marine Consulting\n          \n          \n          Home\n          CV\n          Portfolio\n          ☰\n          \n          \n      \n        \n          \n            ER Marine Consulting\n          \n          \n            \n              Erin Ristig is an independent consultant working with NGOs and academics on a variety of projects. Most often in the context of marine conservation and fisheries management, her experience includes data collection program design, capacity-building and facilitation, project and data management, science communication, and community-driven conservation in international settings.\n              She is passionate about design and adoption of technology that can help enhance marine conservation, implementation of fisheries data collection programs, and stakeholder facilitation and training. Erin has experience working in French Polynesia, Mexico, Ecuador, Argentina, Mozambique, Brazil, and Portugal. She holds a Master of Environmental Science and Management degree in Coastal Marine Resources Management from the Bren School of Environmental Science & Management at UC Santa Barbara and a Bachelor of Arts degree in Environmental Analysis and Spanish from Claremont McKenna College.\n              \n              Clients (past and present)\n              Rare – Nature Analytics – The Rahui Center – The Nature Conservancy – University of California, Santa Barbara – Environmental Defense Fund – California Marine Sanctuary Foundation\n              \n            \n            \n              Erin Ristig is an independent consultant working with NGOs and academics on a variety of projects. Most often in the context of marine conservation and fisheries management, her experience includes data collection program design, capacity-building and facilitation, project and data management, science communication, and community-driven conservation in international settings.\n              She is passionate about design and adoption of technology that can help enhance marine conservation, implementation of fisheries data collection programs, and stakeholder facilitation and training. Erin has experience working in French Polynesia, Mexico, Ecuador, Argentina, Mozambique, Brazil, and Portugal. She holds a Master of Environmental Science and Management degree in Coastal Marine Resources Management from the Bren School of Environmental Science & Management at UC Santa Barbara and a Bachelor of Arts degree in Environmental Analysis and Spanish from Claremont McKenna College.\n              \n              Clients (past and present)\n              Rare – Nature Analytics – The Rahui Center – The Nature Conservancy – University of California, Santa Barbara – Environmental Defense Fund – California Marine Sanctuary Foundation\n              \n            \n          \n\n          \n            \n              \n                  \n                    \n                      Email\n                    \n                  \n                \n                                \n                  \n                    \n                      LinkedIn\n                    \n                  \n                \n                                \n                  \n                    \n                      GitHub\n                    \n                  \n                \n                              \n          \n\n          \n            \n              \n                                \n                  \n                    Email\n                  \n                \n                                \n                  \n                    LinkedIn\n                  \n                \n                                \n                  \n                    GitHub\n                  \n                \n                              \n            \n          \n        \n      \n    \n\n    \n    \n    ",
+      "last_modified": "2022-08-15T16:42:05-07:00"
+    }
+  ],
+  "collections": ["posts/posts.json"]
+}

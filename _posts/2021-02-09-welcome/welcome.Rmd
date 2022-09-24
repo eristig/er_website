@@ -1,9 +1,7 @@
 ---
 title: "A Spatial Prioritization Analysis for Shark and Ray Protection in Mozambique"
 description: |
-   **Client:** Wildlife Conservation Society
-author:
-  - name: Erin Ristig
+   Client: Wildlife Conservation Society
 date: 06-01-2021
 output:
   distill::distill_article:
