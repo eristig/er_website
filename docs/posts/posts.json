@@ -20,8 +20,8 @@
     "categories": [],
     "contents": "\nA series of learning modules created for The Nature Conservancy’s FishKit\nCreated the Fish Science Learning Modules, resources designed to teach the concepts of YPR (yield-per-recruit) and SPR (spawning potential ratio) and their applications to fishery management. The goal of these modules is to provide an overview of the general concepts of YPR and SPR and how they can be used in fishery management. It is not designed to be an exhaustive description of YPR and SPR. Rather, it is aimed at audiences who lack formal fisheries science training, but are interested in better understanding the complicated fisheries concepts of YPR and SPR.\nThe nine learning modules cover the topics of Yield-per-recruit; Spawning Potential Ratio; Growth overfishing; Recruitment overfishing; Life history information; Size limits; Setting size limits; Multi-species size limits; and Length frequencies.\n\n\n\n",
     "preview": {},
-    "last_modified": "2022-09-24T13:45:18-07:00",
-    "input_file": {}
+    "last_modified": "2022-12-24T11:46:59-08:00",
+    "input_file": "learningmodules.utf8.md"
   },
   {
     "path": "posts/2022-12-01-sizelimitapp/",
@@ -32,8 +32,8 @@
     "categories": [],
     "contents": "\nAn online Size limit tool created for The Nature Conservancy’s FishKit\nWas involved in the conception, envisioning, coding and design of a Size Limit Builder Tool, which delivers fast and practical fisheries science to groups that are looking to design size limits for their fishery.\nThe size limit builder utilizes principles of fish biology to project the effects of different size limits on fishing yields and protection of spawners. Insights from comparing different size limits in this way can illustrate tradeoffs between catch and conservation, helping to align outcomes with management objectives.\n\n\n\n",
     "preview": {},
-    "last_modified": "2022-09-24T13:45:31-07:00",
-    "input_file": {}
+    "last_modified": "2022-12-24T11:48:06-08:00",
+    "input_file": "sizelimitapp.utf8.md"
   },
   {
     "path": "posts/2021-02-09-welcome/",
@@ -44,8 +44,8 @@
     "categories": [],
     "contents": "\nMaster’s Thesis Group Project, Bren School of Environmental Science & Management, University of California, Santa Barbara\nAbstract\nChondrichthyes, a class of marine cartilaginous fish (sharks, rays, skates, and chimaeras), are important predators in pelagic, coastal, and estuarine food webs. Many of these species are at high risk of extinction with approximately one-quarter of sharks and rays categorized as threatened according to the IUCN Red List. Mozambique is a global hotspot for shark and ray species richness, endemism, and evolutionary distinctiveness. Chondrichthyes face many threats in Mozambique, especially from fishers, as up to 60% of the population is in some way dependent on marine resources for either sustenance or employment. Marine protected areas (MPAs) may be an effective conservation strategy for sharks and rays if carefully planned. Here, we develop a spatial prioritization model that identifies key areas for shark and ray conservation within the Mozambique economic exclusive zone (EEZ). This is an intermediate step in an ongoing MPA planning process currently underway in Mozambique. Our model will be used by Wildlife Conservation Society (WCS) and the Mozambique government to ensure shark and ray protection is considered in the overall MPA network design.\nFull Thesis\n\n\n\n\n\n",
     "preview": {},
-    "last_modified": "2022-09-24T13:45:07-07:00",
-    "input_file": {}
+    "last_modified": "2022-12-24T11:49:38-08:00",
+    "input_file": "welcome.utf8.md"
   },
   {
     "path": "posts/2021-02-02-kaupulehu/",
@@ -56,7 +56,7 @@
     "categories": [],
     "contents": "\nSize limit report prepared for Ka‘ūpūlehu Marine Life Advisory Committee\nCo-authored a report containing an analysis of size limit options for 33 reef-associated fish species that was conducted in support of continued development of management measures at Ka‘ūpūlehu Marine Reserve, Hawaiʻi Island. The effects of species-specific size limits were analyzed in terms of optimization of fishing yield and protection of spawning biomass. This analysis was constructed from the perspective that reaching spawning size prior to becoming vulnerable to fishing is a relevant consideration for ensuring long-term sustainability of fish populations. Thus, size limit options were explored relative to size at maturity. Accordingly, the analysis was intended to guide decision-making in relation to yield and spawning biomass objectives, and to support on-going community-led discussions about preference, feasibility, and pragmatism of size limits as management measures within the Kaʻūpūlehu Comprehensive Management Plan.\nFull Report\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n",
     "preview": {},
-    "last_modified": "2022-09-24T13:43:42-07:00",
-    "input_file": {}
+    "last_modified": "2022-12-24T11:50:53-08:00",
+    "input_file": "kaupulehu.utf8.md"
   }
 ]

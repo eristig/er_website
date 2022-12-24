@@ -10,7 +10,7 @@ output:
   postcards::trestles
 ---
 #### **About**  
-Erin Ristig is an independent consultant working with NGOs and academics, most often in the context of marine conservation and fisheries management. Her experience includes data collection program design, capacity-building and facilitation, project and data management, science communication, and community-driven conservation in international settings. 
+Erin Ristig is an independent consultant working in the fields of marine conservation and fisheries management. Her experience includes data collection program design, capacity-building and facilitation, project and data management, science communication, and community-driven conservation in international settings. 
 
 She is passionate about design and adoption of technology that can help enhance marine conservation, implementation of fisheries data collection programs, and stakeholder facilitation and training.
 
